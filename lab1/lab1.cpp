@@ -143,9 +143,16 @@ void show_histogram_svg(const vector<size_t>& bins) {
 
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
 
+    size_t max_count = bins[0];
+    size_t bin_count = bins.size();
+    for (size_t i = 1; i < bin_count; i++) {
+        if (max_count < bins[i])
+            max_count = bins[i];
+    }
+
     double top = 0;
     for (size_t bin : bins) {
-        const double bin_width = BLOCK_WIDTH * bin;
+        const double bin_width = static_cast<size_t>(IMAGE_WIDTH * 0.5 * (static_cast<double>(bin) / max_count));
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, "#6699FF", get_random_color());
         top += BIN_HEIGHT;
