@@ -33,3 +33,11 @@ void svg_rect(double x, double y, double width, double height, string stroke, st
     cout << "' fill='" << fill;
     cout << "'/>";
 }
+
+string svg_edges(double hi) {
+    hi = round(hi * 100) / 100;
+    string strHi = to_string(hi);
+    strHi.erase(strHi.find_last_not_of('0') + 1, std::string::npos);
+    strHi.erase(strHi.find_last_not_of('.') + 1, std::string::npos);
+    return strHi;
+}
