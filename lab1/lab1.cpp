@@ -3,6 +3,8 @@
 #include <string>
 #include <random>
 
+#include "histogram.h"
+
 using namespace std;
 
 const size_t SCREEN_WIDTH = 80;
@@ -15,21 +17,6 @@ vector<double> input_numbers(size_t count) {
     }
     return result;
 }
-
-void find_minmax(const vector<double>& numbers, double& min, double& max) {
-    min = numbers[0];
-    max = numbers[0];
-
-    for (double x : numbers) {
-        if (x < min) {
-            min = x;
-        }
-        else if (x > max) {
-            max = x;
-        }
-    }
-}
-
 
 vector<size_t> make_histogram(const vector<double>& numbers, size_t bin_count) {
     vector<size_t> result(bin_count);
@@ -168,11 +155,25 @@ int main()
     cerr << "Enter number count: ";
     cin >> number_count;
 
+    if (number_count <= 0) {
+        cerr << "number count cannot be equal or below zero";
+        return 0;
+    }
+
     const auto numbers = input_numbers(number_count);
+
+    if (numbers.size() == 0) {
+        cerr << "numbers cannot be empty";
+    }
 
     size_t bin_count;
     cerr << "Enter bin count: ";
     cin >> bin_count;
+
+    if (bin_count <= 0) {
+        cerr << "bin count cannot be equal or below zero";
+        return 0;
+    }
 
     const auto bins = make_histogram(numbers,bin_count);
 
