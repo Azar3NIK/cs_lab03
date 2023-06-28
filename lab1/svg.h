@@ -3,6 +3,8 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -13,6 +15,8 @@ const auto TEXT_BASELINE = 20;
 const auto TEXT_WIDTH = 50;
 const auto BIN_HEIGHT = 30;
 const auto BLOCK_WIDTH = 10;
+const auto EDGE_WIDTH = 40;
+const auto EDGE_HEIGHT = 23;
 
 
 string get_random_color();
@@ -24,3 +28,5 @@ void svg_end();
 void svg_text(double left, double baseline, string text);
 
 void svg_rect(double x, double y, double width, double height, string stroke = "black", string fill = "black");
+
+string svg_edges(double hi);
