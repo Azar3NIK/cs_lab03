@@ -145,7 +145,8 @@ void show_histogram_svg(const vector<size_t>& bins, const vector<double>& number
 int main(int argc, char* argv[])
 {
     if (argc > 1) {
-        cout  << "argv[0] = " << argv[0];
+        for(int i = 0; i < argc; i++)
+        cout  << "argv[" << i << "] = " << argv[i] << endl;
         return 0;
     }
     
