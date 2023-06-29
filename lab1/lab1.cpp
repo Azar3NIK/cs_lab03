@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
 #include <string>
+#include <curl/curl.h>
 
 #include "histogram.h"
 #include "svg.h"
@@ -143,6 +144,7 @@ void show_histogram_svg(const vector<size_t>& bins, const vector<double>& number
 
 int main()
 {
+    curl_global_init(CURL_GLOBAL_ALL);
 
     const auto input = read_input(cin, true);
 
